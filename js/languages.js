@@ -1,5 +1,7 @@
 // Banco de dados de linguagens para a plataforma Emmanuel Educa
-const languagesData = [
+// Mescla as linguagens padrão com linguagens customizadas adicionadas pelo Admin via localStorage
+
+const defaultLanguages = [
   {
     id: 'scratch',
     name: 'Scratch',
@@ -115,7 +117,7 @@ else:
       steps: [
         'Crie uma tag <code>&lt;div class="card"&gt;</code> para ser a caixa do cartão.',
         'Coloque um título <code>&lt;h2&gt;</code> com seu nome e um parágrafo com seus superpoderes.',
-        'No CSS, adicione <code>border: 2px solid #10b981</code> e <code>box-shadow: 0 0 10px #10b981;</code>.',
+        'No CSS, adicione <code>border: 2px solid #10b981</code> and <code>box-shadow: 0 0 10px #10b981;</code>.',
         'Use a propriedade CSS <code>transition: 0.3s</code> e o seletor <code>.card:hover</code> para fazer o brilho aumentar quando passar o mouse!'
       ]
     }
@@ -471,7 +473,24 @@ func enviarMensagem(nome string) {
   }
 ];
 
+// Carregar linguagens customizadas do localStorage
+function getLanguages() {
+  const customs = JSON.parse(localStorage.getItem('emmanuel_educa_custom_languages')) || [];
+  return [...defaultLanguages, ...customs];
+}
+
+// Inicializa a variável global languagesData com a junção das duas fontes
+let languagesData = getLanguages();
+
+// Função auxiliar para recarregar o banco de dados dinamicamente após edições do admin
+function reloadLanguagesData() {
+  languagesData = getLanguages();
+  if (typeof renderLanguages === 'function') {
+    renderLanguages();
+  }
+}
+
 // Exporta se estiver em ambiente Node/CommonJS (para testes caso necessário) ou anexa na window
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = languagesData;
+  module.exports = { defaultLanguages, getLanguages, languagesData, reloadLanguagesData };
 }

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Emmanuel Educa | Almanaque Interativo de Programação</title>
-  <meta name="description" content="Aprenda a programar de forma fácil e divertida com o Emmanuel Educa! Um almanaque de linguagens com playground, quiz e roteiros ideais para crianças e iniciantes.">
+  <title>Emmanuel Educa | Plataforma de Ensino de Programação Gratuita</title>
+  <meta name="description" content="Aprenda a programar de graça com o Emmanuel Educa! Uma plataforma completa com catalogos interativos, quizzes, roteiros e playground ideal para crianças e iniciantes.">
   <meta name="author" content="Emmanuel Educa">
-  <meta name="theme-color" content="#050608">
+  <meta name="theme-color" content="#06070a">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,263 +18,606 @@
 </head>
 <body>
 
-  <!-- Cabecário / HUD Tecnológico -->
-  <header>
-    <a href="#" class="logo" id="logo-home">
-      <i class="fas fa-microchip"></i>
-      <div class="logo-text">EMMANUEL <span>EDUCA</span></div>
-    </a>
-    
-    <!-- Navegação -->
-    <nav aria-label="Navegação Principal">
-      <button class="nav-btn active" data-tab="aprender" id="btn-tab-aprender">
-        <i class="fas fa-book-open"></i> Aprender
-      </button>
-      <button class="nav-btn" data-tab="playground" id="btn-tab-playground">
-        <i class="fas fa-laptop-code"></i> Playground
-      </button>
-      <button class="nav-btn" data-tab="roadmap" id="btn-tab-roadmap">
-        <i class="fas fa-map-signs"></i> Roadmap
-      </button>
-      <button class="nav-btn" data-tab="quiz" id="btn-tab-quiz">
-        <i class="fas fa-gamepad"></i> Quiz Arena
-      </button>
-      <button class="nav-btn" data-tab="glossario" id="btn-tab-glossario">
-        <i class="fas fa-atlas"></i> Glossário
-      </button>
-      <button class="nav-btn" data-tab="chat" id="btn-tab-chat">
-        <i class="fas fa-robot"></i> Emmanuel AI
-      </button>
-    </nav>
-    
-    <!-- Painel de Estatísticas / Gamificação -->
-    <div class="hud-panel" id="hud-gamification">
-      <div class="xp-container">
-        <div class="xp-label">
-          <span id="hud-level-label">NÍVEL 1</span>
-          <span id="hud-xp-count">0 XP</span>
+  <!-- ========================================== -->
+  <!-- VIEW 1: LANDING PAGE PÚBLICA               -->
+  <!-- ========================================== -->
+  <div id="landing-view">
+    <!-- Header da Landing Page -->
+    <header class="landing-header">
+      <a href="#" class="logo">
+        <i class="fas fa-microchip"></i>
+        <div class="logo-text">EMMANUEL <span>EDUCA</span></div>
+      </a>
+      <button class="btn-outline" id="btn-open-auth">Acessar Plataforma <i class="fas fa-sign-in-alt"></i></button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="landing-hero" aria-label="Introdução da plataforma">
+      <h1>A PLATAFORMA DE ENSINO DE PROGRAMAÇÃO <span>100% GRATUITA</span></h1>
+      <p>Desenvolvida com carinho para crianças a partir de 10 anos e iniciantes darem os seus primeiros passos no universo dos códigos através de analogias simples, jogos e testes divertidos!</p>
+      <button class="btn-glowing" id="btn-start-now">Iniciar Minha Jornada Grátis <i class="fas fa-rocket"></i></button>
+    </section>
+
+    <!-- Estatísticas Interativas -->
+    <section class="stats-section" aria-label="Estatísticas da plataforma">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Linguagens Guiadas</div>
         </div>
-        <div class="xp-bar-outer" aria-label="Barra de progresso de nível">
-          <div class="xp-bar-inner" id="hud-xp-bar"></div>
+        <div class="stat-item">
+          <div class="stat-num">Gratuito</div>
+          <div class="stat-label">Sem Assinaturas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Prático e Interativo</div>
         </div>
       </div>
-      
-      <div class="badge-counter" id="badge-display-box" title="Minhas Medalhas Conquistadas">
-        <i class="fas fa-award"></i>
-        <span id="hud-badge-count">0 Medalhas</span>
+    </section>
+
+    <!-- Grade de Recursos (Benefícios) -->
+    <section class="features-section" aria-label="Recursos oferecidos">
+      <h2 class="section-title">POR QUE ESCOLHER O <span>EMMANUEL EDUCA</span>?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-brain"></i></div>
+          <h3>Fácil de Entender</h3>
+          <p>Explicamos termos difíceis como "APIs", "Bugs" ou "Loops" com analogias cômicas baseadas em receitas de bolo e caixas de brinquedo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-award"></i></div>
+          <h3>Gamificação Divertida</h3>
+          <p>Acumule XP lendo resumos, marcando etapas do roteiro de estudos e respondendo ao quiz. Ganhe medalhas brilhantes pelo seu esforço!</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="fas fa-flask"></i></div>
+          <h3>Playground Sem Instalar Nada</h3>
+          <p>Escreva códigos HTML, CSS e JavaScript diretamente no navegador e veja a resposta visual ou de console de forma imediata.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAL DE AUTENTICAÇÃO (LOGIN/CADASTRO EM MODAL) -->
+    <div class="auth-overlay" id="auth-overlay" role="dialog" aria-modal="true">
+      <div class="auth-container">
+        <button class="auth-close" id="auth-close-btn" aria-label="Fechar janela de acesso"><i class="fas fa-times"></i></button>
+        
+        <!-- Abas do Acesso -->
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" id="tab-btn-login" data-tab="login">Entrar</button>
+          <button class="auth-tab-btn" id="tab-btn-signup" data-tab="signup">Cadastrar-se</button>
+        </div>
+
+        <!-- Form 1: Login -->
+        <form class="auth-form active" id="form-login" novalidate>
+          <div class="auth-error" id="login-error">Erro de validação</div>
+          <div class="input-group">
+            <label for="login-email">E-mail de Estudante (ou usuário admin)</label>
+            <div class="input-wrapper">
+              <i class="fas fa-envelope"></i>
+              <input type="text" id="login-email" class="auth-input" placeholder="exemplo@educa.com" required>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="login-pass">Senha de Acesso</label>
+            <div class="input-wrapper">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="login-pass" class="auth-input" placeholder="••••••••" required>
+            </div>
+          </div>
+          <button type="submit" class="auth-btn">Acessar Plataforma <i class="fas fa-sign-in-alt"></i></button>
+          <p style="font-size:0.75rem; text-align:center; color:var(--text-muted); margin-top:10px;">
+            Acesso do Admin: <code>emmanuel_admin</code> / <code>educa_superuser_99</code>
+          </p>
+        </form>
+
+        <!-- Form 2: Cadastro -->
+        <form class="auth-form" id="form-signup" novalidate>
+          <div class="auth-error" id="signup-error">Erro de validação</div>
+          <div class="input-group">
+            <label for="signup-name">Nome do Estudante / Desenvolvedor</label>
+            <div class="input-wrapper">
+              <i class="fas fa-user"></i>
+              <input type="text" id="signup-name" class="auth-input" placeholder="Seu Nome Completo" required>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="signup-email">E-mail para Acesso</label>
+            <div class="input-wrapper">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="signup-email" class="auth-input" placeholder="estudante@email.com" required>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="signup-pass">Escolha uma Senha (mín. 4 dígitos)</label>
+            <div class="input-wrapper">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="signup-pass" class="auth-input" placeholder="Crie sua senha secreta" required>
+            </div>
+          </div>
+          <button type="submit" class="auth-btn">Criar Conta e Iniciar <i class="fas fa-user-plus"></i></button>
+        </form>
       </div>
     </div>
-  </header>
+  </div>
 
-  <!-- Conteúdo Principal -->
-  <main id="main-content">
-    
-    <!-- SEÇÃO 1: APRENDER (ALMANAQUE) -->
-    <section class="section active" id="section-aprender" aria-label="Almanaque de Linguagens">
-      <div class="hero">
-        <h1>O ALMANAQUE DA <span>PROGRAMAÇÃO</span></h1>
-        <p>Explore o universo dos códigos! Escolha uma linguagem abaixo para aprender de forma divertida com analogias simples feitas até para uma criança de 10 anos entender.</p>
-      </div>
-      
-      <!-- Busca e Filtros -->
-      <div class="search-filter-container">
-        <div class="search-wrapper">
-          <i class="fas fa-search"></i>
-          <input type="text" id="lang-search" class="search-input" placeholder="Pesquisar por linguagem (Ex: Python, Javascript)..." aria-label="Buscar linguagem de programação">
+  <!-- ========================================== -->
+  <!-- VIEW 2: PORTAL INTERNO LOGADO             -->
+  <!-- ========================================== -->
+  <div id="portal-view" style="display: none;">
+    <!-- Mobile Header (hamburger toggle) -->
+    <div class="mobile-header">
+      <a href="#" class="logo">
+        <i class="fas fa-microchip"></i>
+        <span>EMMANUEL EDUCA</span>
+      </a>
+      <button class="btn-menu-toggle" id="btn-menu-toggle" aria-label="Abrir menu lateral"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="portal-container">
+      <!-- Menu Lateral (Sidebar) -->
+      <aside class="sidebar" id="portal-sidebar">
+        <a href="#" class="sidebar-logo">
+          <i class="fas fa-microchip"></i>
+          <div>EMMANUEL <span>EDUCA</span></div>
+        </a>
+
+        <!-- Dados do Usuário Logado -->
+        <div class="sidebar-user">
+          <div class="sidebar-user-name" id="sidebar-user-name">Carregando...</div>
+          <div class="sidebar-user-role" id="sidebar-user-role"><i class="fas fa-graduation-cap"></i> Estudante</div>
         </div>
-        
-        <div class="filter-tags" role="group" aria-label="Filtrar linguagens por categoria">
-          <button class="filter-tag active" data-filter="all">Todos</button>
-          <button class="filter-tag" data-filter="iniciante">Iniciante</button>
-          <button class="filter-tag" data-filter="web">Web</button>
-          <button class="filter-tag" data-filter="jogos">Jogos</button>
-          <button class="filter-tag" data-filter="mobile">Mobile</button>
-          <button class="filter-tag" data-filter="dados">Dados</button>
-          <button class="filter-tag" data-filter="sistemas">Sistemas</button>
-        </div>
-      </div>
-      
-      <!-- Grid de Linguagens -->
-      <div class="languages-grid" id="languages-grid">
-        <!-- Renderizado dinamicamente via JS -->
-      </div>
-    </section>
-    
-    <!-- SEÇÃO 2: PLAYGROUND (SIMULADOR DE CÓDIGO) -->
-    <section class="section" id="section-playground" aria-label="Playground Interativo">
-      <div class="hero">
-        <h1>PLAYGROUND <span>INTERATIVO</span></h1>
-        <p>Escreva códigos reais e veja a mágica acontecer instantaneamente na sua tela de testes!</p>
-      </div>
-      
-      <div class="playground-container">
-        <!-- Lado 1: Editor -->
-        <div class="playground-editor">
-          <div class="playground-header">
-            <span class="playground-title"><i class="fas fa-code"></i> Editor de Código</span>
-            <select id="play-lang-select" class="playground-select" aria-label="Selecione a linguagem para o playground">
-              <option value="javascript">JavaScript (Consola/Lógica)</option>
-              <option value="html-css">HTML & CSS (Página Web)</option>
-            </select>
-            <button class="btn-play-run" id="play-btn-run">
-              Executar Código <i class="fas fa-play"></i>
-            </button>
-          </div>
-          <textarea id="play-code" class="playground-textarea" spellcheck="false" aria-label="Área para digitar código"></textarea>
-        </div>
-        
-        <!-- Lado 2: Tela de Resultado -->
-        <div class="playground-preview">
-          <div class="playground-header">
-            <span class="playground-title"><i class="fas fa-terminal"></i> Terminal / Visualização</span>
-          </div>
-          <!-- Preview HTML/CSS -->
-          <iframe id="play-iframe" class="iframe-preview" style="display: none;" title="Visualização do resultado do código"></iframe>
-          <!-- Logs de Console JS -->
-          <div id="play-terminal" class="terminal-preview">// Console limpo. Aguardando execução...</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- SEÇÃO 3: ROADMAP (ROTA DO FUTURO) -->
-    <section class="section" id="section-roadmap" aria-label="Roteiro de Estudos">
-      <div class="hero">
-        <h1>ROADMAP DO <span>FUTURO</span></h1>
-        <p>Siga esta rota de aprendizado sugerida para passar de um curioso digital a um criador de mundos completo!</p>
-      </div>
-      
-      <div class="roadmap-container" id="roadmap-list">
-        <!-- Renderizado dinamicamente via JS -->
-      </div>
-    </section>
-    
-    <!-- SEÇÃO 4: QUIZ (ARENA) -->
-    <section class="section" id="section-quiz" aria-label="Quiz de Programação">
-      <div class="hero">
-        <h1>ARENA DE <span>QUIZ</span></h1>
-        <p>Teste seus conhecimentos cibernéticos nas 10 perguntas do Emmanuel Educa, ganhe XP e desbloqueie medalhas incríveis!</p>
-      </div>
-      
-      <!-- Box do Jogo -->
-      <div class="quiz-wrapper">
-        <div id="quiz-play-box">
-          <div class="quiz-hud">
-            <span>Questão <strong id="quiz-current-num">1</strong> de <strong id="quiz-total-num">10</strong></span>
-            <span>Pontos: <strong id="quiz-score-val">0</strong> XP</span>
-          </div>
+
+        <!-- Navegação Interna -->
+        <nav class="sidebar-nav" aria-label="Navegação da Plataforma">
+          <button class="sidebar-btn active" data-tab="aprender" id="btn-tab-aprender">
+            <i class="fas fa-book-open"></i> Lições e Linguagens
+          </button>
+          <button class="sidebar-btn" data-tab="playground" id="btn-tab-playground">
+            <i class="fas fa-laptop-code"></i> Playground Prático
+          </button>
+          <button class="sidebar-btn" data-tab="roadmap" id="btn-tab-roadmap">
+            <i class="fas fa-route"></i> Roteiro de Estudos
+          </button>
+          <button class="sidebar-btn" data-tab="quiz" id="btn-tab-quiz">
+            <i class="fas fa-gamepad"></i> Quiz Arena
+          </button>
+          <button class="sidebar-btn" data-tab="ranking" id="btn-tab-ranking">
+            <i class="fas fa-trophy"></i> Campeonato (Ranking)
+          </button>
+          <button class="sidebar-btn" data-tab="glossario" id="btn-tab-glossario">
+            <i class="fas fa-atlas"></i> Glossário Técnico
+          </button>
+          <button class="sidebar-btn" data-tab="chat" id="btn-tab-chat">
+            <i class="fas fa-robot"></i> Chatbot Ajudante
+          </button>
+          <button class="sidebar-btn" data-tab="profile" id="btn-tab-profile">
+            <i class="fas fa-user-cog"></i> Meu Perfil
+          </button>
           
-          <div class="quiz-progress-outer">
-            <div class="quiz-progress-inner" id="quiz-progress"></div>
-          </div>
-          
-          <div class="quiz-question-box">
-            <h2 id="quiz-question">Carregando pergunta galáctica...</h2>
+          <!-- Aba Administrativa Oculta por Padrão (Superusuário apenas) -->
+          <button class="sidebar-btn admin-only-btn" data-tab="admin" id="btn-tab-admin" style="display: none;">
+            <i class="fas fa-user-shield"></i> Painel Administrativo
+          </button>
+        </nav>
+
+        <!-- Rodapé do Menu (HUD e Logout) -->
+        <div class="sidebar-footer">
+          <div class="hud-panel" style="background:transparent; border:none; padding:0; flex-direction:column; align-items:stretch; gap:12px; width:100%; margin-bottom:15px;">
+            <div class="xp-container" style="width:100%;">
+              <div class="xp-label">
+                <span id="hud-level-label">NÍVEL 1</span>
+                <span id="hud-xp-count">0 XP</span>
+              </div>
+              <div class="xp-bar-outer" style="height:8px; border-radius:4px;">
+                <div class="xp-bar-inner" id="hud-xp-bar" style="border-radius:4px;"></div>
+              </div>
+            </div>
             
-            <div class="quiz-options" id="quiz-options">
-              <!-- Renderizado dinamicamente -->
+            <div class="badge-counter" id="badge-display-box" style="justify-content:center; padding:6px;">
+              <i class="fas fa-award"></i>
+              <span id="hud-badge-count">0 Medalhas</span>
             </div>
           </div>
           
-          <!-- Bloco de Explicação -->
-          <div class="quiz-feedback" id="quiz-feedback-box">
-            <h3 class="feedback-title" id="quiz-feedback-title">RESPOSTA CORRETA!</h3>
-            <p id="quiz-feedback-text">Explicação</p>
-          </div>
-          
-          <div class="quiz-actions">
-            <button class="btn-next-question" id="quiz-btn-next">
-              Próxima Questão <i class="fas fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-        
-        <!-- Box de Resultados -->
-        <div class="quiz-results" id="quiz-results-box">
-          <div class="results-crown"><i class="fas fa-crown"></i></div>
-          <h2 class="results-score" id="results-score-val">10/10</h2>
-          <h3 id="results-xp-earned" style="margin-bottom: 10px;">Você ganhou +150 XP!</h3>
-          <p class="results-msg" id="results-msg-text">Carregando avaliação...</p>
-          
-          <!-- Conquistas Unlocked -->
-          <div class="unlocked-badges-container">
-            <h4>MEDALHAS DESTA RODADA</h4>
-            <div class="results-badges-grid" id="results-badges">
-              <!-- Cards das medalhas -->
-            </div>
-          </div>
-          
-          <button class="btn-restart-quiz" id="quiz-btn-restart">Jogar Novamente <i class="fas fa-redo"></i></button>
-        </div>
-      </div>
-    </section>
-    
-    <!-- SEÇÃO 5: GLOSSÁRIO -->
-    <section class="section" id="section-glossario" aria-label="Glossário Hacker">
-      <div class="hero">
-        <h1>GLOSSÁRIO <span>HACKER</span></h1>
-        <p>Apareceu uma palavra difícil por aí? Procure-a aqui para entender o significado com analogias do dia a dia.</p>
-      </div>
-      
-      <!-- Busca Glossário -->
-      <div class="search-filter-container" style="max-width: 600px; margin: 0 auto 40px auto;">
-        <div class="search-wrapper">
-          <i class="fas fa-search"></i>
-          <input type="text" id="glossary-search" class="search-input" placeholder="Pesquisar termo (Ex: API, Bug, Loops)..." aria-label="Buscar termo do glossário">
-        </div>
-      </div>
-      
-      <div class="glossary-grid" id="glossary-list">
-        <!-- Renderizado dinamicamente -->
-      </div>
-    </section>
-    
-    <!-- SEÇÃO 6: CHATBOT AJUDANTE -->
-    <section class="section" id="section-chat" aria-label="Emmanuel AI Chatbot">
-      <div class="hero">
-        <h1>EMMANUEL <span>AI</span></h1>
-        <p>Converse com o Robo-Emmanuel! Ele está pronto para responder suas principais dúvidas sobre programação e guiar seus passos.</p>
-      </div>
-      
-      <div class="chatbot-wrapper">
-        <div class="chatbot-header">
-          <div class="bot-avatar"><i class="fas fa-robot"></i></div>
-          <div class="bot-info">
-            <h3>Robo-Emmanuel</h3>
-            <span class="bot-status">Online e escutando</span>
-          </div>
-        </div>
-        
-        <!-- Histórico do Chat -->
-        <div class="chat-history" id="chat-history">
-          <div class="chat-message bot">
-            Bip Bop! Olá, futuro programador! Eu sou o Robo-Emmanuel, o robô conselheiro da plataforma. Qual a sua dúvida sobre códigos hoje?
-          </div>
-        </div>
-        
-        <!-- Balões de Dicas Rápidas -->
-        <div class="chat-suggestions">
-          <button class="suggestion-chip">Como começar?</button>
-          <button class="suggestion-chip">Como criar jogos?</button>
-          <button class="suggestion-chip">O que é Python?</button>
-          <button class="suggestion-chip">Como criar sites?</button>
-        </div>
-        
-        <!-- Input de Mensagem -->
-        <div class="chat-input-area">
-          <input type="text" id="chat-input" class="chat-input" placeholder="Pergunte algo ao Robo-Emmanuel..." aria-label="Digite sua mensagem para o chatbot">
-          <button class="btn-chat-send" id="chat-btn-send" aria-label="Enviar mensagem">
-            <i class="fas fa-paper-plane"></i>
+          <button class="sidebar-btn" id="btn-logout" style="width:100%; justify-content:center; border-color:rgba(239,68,68,0.25); color:var(--danger)">
+            Deslogar <i class="fas fa-sign-out-alt"></i>
           </button>
         </div>
-      </div>
-    </section>
+      </aside>
 
-  </main>
+      <!-- Área de Conteúdo das Seções -->
+      <main class="portal-content" id="portal-content-box">
+        
+        <!-- SEÇÃO 1: APRENDER / ALMANAQUE -->
+        <div class="portal-content-section active" id="sect-aprender">
+          <div class="hero">
+            <h1>ALMANAQUE DE <span>PROGRAMAÇÃO</span></h1>
+            <p>Escolha uma linguagem e comece a ler explicações simples baseadas no cotidiano. Cada leitura concluída te concede +20 XP!</p>
+          </div>
+          
+          <!-- Filtros de Linguagem -->
+          <div class="search-filter-container">
+            <div class="search-wrapper">
+              <i class="fas fa-search"></i>
+              <input type="text" id="lang-search" class="search-input" placeholder="Pesquisar por linguagem (Ex: Python, Javascript)..." aria-label="Pesquisar linguagem de programação no catálogo">
+            </div>
+            <div class="filter-tags" role="group" aria-label="Categoria de Linguagens">
+              <button class="filter-tag active" data-filter="all">Todos</button>
+              <button class="filter-tag" data-filter="iniciante">Iniciante</button>
+              <button class="filter-tag" data-filter="web">Web</button>
+              <button class="filter-tag" data-filter="jogos">Jogos</button>
+              <button class="filter-tag" data-filter="mobile">Mobile</button>
+              <button class="filter-tag" data-filter="dados">Dados</button>
+              <button class="filter-tag" data-filter="sistemas">Sistemas</button>
+            </div>
+          </div>
 
-  <!-- MODAL DE DETALHES DE LINGUAGEM -->
+          <!-- Grid de Cards -->
+          <div class="languages-grid" id="languages-grid">
+            <!-- Inserido dinamicamente via JS -->
+          </div>
+        </div>
+
+        <!-- SEÇÃO 2: PLAYGROUND -->
+        <div class="portal-content-section" id="sect-playground">
+          <div class="hero">
+            <h1>PLAYGROUND DE <span>TESTES</span></h1>
+            <p>Escreva códigos JS ou HTML/CSS e execute na hora para testar lógicas e layouts. Rodar códigos te concede +5 XP.</p>
+          </div>
+          
+          <div class="playground-container">
+            <!-- Coluna do Editor -->
+            <div class="playground-editor">
+              <div class="playground-header">
+                <span class="playground-title"><i class="fas fa-code"></i> Editor</span>
+                <select id="play-lang-select" class="playground-select" aria-label="Escolher tecnologia do playground">
+                  <option value="javascript">JavaScript (Consola/Lógica)</option>
+                  <option value="html-css">HTML & CSS (Estrutura/Aparência)</option>
+                </select>
+                <button class="btn-play-run" id="play-btn-run">
+                  Rodar Código <i class="fas fa-play"></i>
+                </button>
+              </div>
+              <textarea id="play-code" class="playground-textarea" spellcheck="false" aria-label="Digite seu código aqui"></textarea>
+            </div>
+
+            <!-- Coluna de Output -->
+            <div class="playground-preview">
+              <div class="playground-header">
+                <span class="playground-title"><i class="fas fa-terminal"></i> Tela de Saída</span>
+              </div>
+              <iframe id="play-iframe" class="iframe-preview" style="display: none;" title="Saída de renderização HTML/CSS"></iframe>
+              <div id="play-terminal" class="terminal-preview">// Console limpo. Aguardando execução...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 3: ROADMAP DE ESTUDOS -->
+        <div class="portal-content-section" id="sect-roadmap">
+          <div class="hero">
+            <h1>ROTEIRO DO <span>DESENVOLVEDOR</span></h1>
+            <p>Confira o mapa de conquistas! Marque as etapas concluídas e receba bônus de XP para subir de nível e subir no ranking!</p>
+          </div>
+          
+          <div class="roadmap-container" id="roadmap-list">
+            <!-- Inserido via JS -->
+          </div>
+        </div>
+
+        <!-- SEÇÃO 4: QUIZ ARENA -->
+        <div class="portal-content-section" id="sect-quiz">
+          <div class="hero">
+            <h1>ARENA DE <span>QUIZ</span></h1>
+            <p>Participe do Quiz Oficial de 10 perguntas rápidas. Cada acerto concede +15 XP. Complete com sucesso para ganhar medalhas exclusivas!</p>
+          </div>
+
+          <div class="quiz-wrapper">
+            <!-- Tela do Jogo -->
+            <div id="quiz-play-box">
+              <div class="quiz-hud">
+                <span>Pergunta <strong id="quiz-current-num">1</strong> de <strong id="quiz-total-num">10</strong></span>
+                <span>Pontuação: <strong id="quiz-score-val">0</strong> XP</span>
+              </div>
+              
+              <div class="quiz-progress-outer">
+                <div class="quiz-progress-inner" id="quiz-progress"></div>
+              </div>
+              
+              <div class="quiz-question-box">
+                <h2 id="quiz-question">Questão...</h2>
+                <div class="quiz-options" id="quiz-options">
+                  <!-- Opções geradas via JS -->
+                </div>
+              </div>
+              
+              <!-- Bloco Explicativo -->
+              <div class="quiz-feedback" id="quiz-feedback-box">
+                <h3 class="feedback-title" id="quiz-feedback-title">CORRETO!</h3>
+                <p id="quiz-feedback-text">Explicação...</p>
+              </div>
+              
+              <div class="quiz-actions">
+                <button class="btn-next-question" id="quiz-btn-next">
+                  Avançar <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Tela de Resultados -->
+            <div class="quiz-results" id="quiz-results-box" style="display: none;">
+              <div class="results-crown"><i class="fas fa-trophy"></i></div>
+              <h2 class="results-score" id="results-score-val">10/10</h2>
+              <h3 id="results-xp-earned" style="margin-bottom:10px;">Você ganhou +150 XP!</h3>
+              <p class="results-msg" id="results-msg-text">Parabéns!</p>
+              
+              <div class="unlocked-badges-container">
+                <h4>MEDALHAS CONQUISTADAS</h4>
+                <div class="results-badges-grid" id="results-badges">
+                  <!-- Medalhas inseridas aqui -->
+                </div>
+              </div>
+              
+              <button class="btn-restart-quiz" id="quiz-btn-restart">Jogar Novamente <i class="fas fa-redo"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 5: RANKING (LEADERBOARD) -->
+        <div class="portal-content-section" id="sect-ranking">
+          <div class="hero">
+            <h1>RANKING DOS <span>DESENVOLVEDORES</span></h1>
+            <p>Confira a classificação dos estudantes em destaque! Ganhe XP na plataforma para subir de posição e disputar o pódio de ouro!</p>
+          </div>
+          
+          <!-- Pódio do Top 3 -->
+          <div class="podium-container" id="podium-list">
+            <!-- Gerado via JS -->
+          </div>
+          
+          <!-- Tabela com todos os inscritos -->
+          <div class="leaderboard-table-container">
+            <table class="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Posição</th>
+                  <th>Estudante</th>
+                  <th>XP Acumulado</th>
+                  <th>Lições Concluídas</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-tbody">
+                <!-- Gerado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 6: GLOSSÁRIO TÉCNICO -->
+        <div class="portal-content-section" id="sect-glossario">
+          <div class="hero">
+            <h1>GLOSSÁRIO <span>HACKER</span></h1>
+            <p>Dúvidas em alguma nomenclatura? Escreva o termo abaixo para ler sua analogia didática rápida.</p>
+          </div>
+          
+          <div class="search-filter-container" style="max-width: 500px; margin: 0 auto 30px auto;">
+            <div class="search-wrapper">
+              <i class="fas fa-search"></i>
+              <input type="text" id="glossary-search" class="search-input" placeholder="Pesquisar termo (API, Bug, Null)..." aria-label="Pesquisar termos no glossário técnico">
+            </div>
+          </div>
+          
+          <div class="glossary-grid" id="glossary-list">
+            <!-- Gerado via JS -->
+          </div>
+        </div>
+
+        <!-- SEÇÃO 7: CHATBOT DE AJUDA -->
+        <div class="portal-content-section" id="sect-chat">
+          <div class="hero">
+            <h1>CONVERSE COM O <span>ROBO-EMANNUEL</span></h1>
+            <p>Tem dúvidas de programação? O nosso robozinho ajudante tem respostas rápidas prontas para te ajudar.</p>
+          </div>
+          
+          <div class="chatbot-wrapper">
+            <div class="chatbot-header">
+              <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+              <div class="bot-info">
+                <h3>Robo-Emmanuel</h3>
+                <span class="bot-status">Online e ouvindo</span>
+              </div>
+            </div>
+            
+            <div class="chat-history" id="chat-history">
+              <div class="chat-message bot">
+                Bip Bop! Olá, futuro programador! Eu sou o Robo-Emmanuel, o robô conselheiro da plataforma. Qual a sua dúvida sobre códigos hoje?
+              </div>
+            </div>
+            
+            <div class="chat-suggestions" role="group" aria-label="Sugestões de perguntas rápidas">
+              <button class="suggestion-chip">Como começar?</button>
+              <button class="suggestion-chip">Como criar jogos?</button>
+              <button class="suggestion-chip">O que é Python?</button>
+              <button class="suggestion-chip">Como criar sites?</button>
+            </div>
+            
+            <div class="chat-input-area">
+              <input type="text" id="chat-input" class="chat-input" placeholder="Pergunte algo ao Robo-Emmanuel..." aria-label="Digite sua mensagem para o robô">
+              <button class="btn-chat-send" id="chat-btn-send" aria-label="Enviar mensagem ao robô"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 8: MEU PERFIL -->
+        <div class="portal-content-section" id="sect-profile">
+          <div class="hero">
+            <h1>MEU <span>PERFIL DE ESTUDANTE</span></h1>
+            <p>Visualize suas informações, medalhas conquistadas e controle suas configurações de progresso na plataforma.</p>
+          </div>
+
+          <div class="profile-container">
+            <div class="profile-card">
+              <div class="profile-avatar"><i class="fas fa-user-astronaut"></i></div>
+              <div class="profile-details">
+                <h3 id="profile-name-val">Nome</h3>
+                <p id="profile-email-val">email@exemplo.com</p>
+                <div style="font-size:0.75rem; color:var(--primary-green); font-family:var(--font-title); margin-bottom:16px;" id="profile-role-val">Estudante Oficial</div>
+              </div>
+              
+              <button class="btn-danger" id="btn-profile-reset">Resetar Meu Progresso <i class="fas fa-exclamation-triangle"></i></button>
+              <button class="btn-outline" id="btn-profile-logout" style="margin-top:10px; width:100%; display:block;">Sair da Conta</button>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="dashboard-card-title"><i class="fas fa-award"></i> Minhas Medalhas Ganhas</div>
+              <div class="results-badges-grid" id="profile-badges-grid" style="justify-content:flex-start;">
+                <!-- Inserido via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 9: PAINEL ADMINISTRATIVO (APENAS SUPERUSUÁRIO) -->
+        <div class="portal-content-section" id="sect-admin">
+          <div class="hero" style="background: radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.08) 0%, transparent 60%);">
+            <h1 style="color:#fbbf24;">PAINEL DO <span>SUPERUSUÁRIO</span></h1>
+            <p>Controle do Administrador: gerencie os estudantes matriculados, veja logs de auditoria de sistema e cadastre novas linguagens em tempo real!</p>
+          </div>
+
+          <!-- Métricas Administrativas -->
+          <div class="admin-metrics-grid">
+            <div class="admin-metric-card">
+              <h4>ALUNOS MATRICULADOS</h4>
+              <div class="value" id="admin-stat-users">0</div>
+              <div class="subtext"><i class="fas fa-user-graduate"></i> Contas ativas</div>
+            </div>
+            <div class="admin-metric-card">
+              <h4>LINGUAGENS CADASTRADAS</h4>
+              <div class="value" id="admin-stat-langs">0</div>
+              <div class="subtext"><i class="fas fa-file-code"></i> Total no catálogo</div>
+            </div>
+            <div class="admin-metric-card">
+              <h4>XP MÉDIO GERAL</h4>
+              <div class="value" id="admin-stat-xp">0 XP</div>
+              <div class="subtext"><i class="fas fa-chart-line"></i> Média por aluno</div>
+            </div>
+            <div class="admin-metric-card">
+              <h4>UPTIME DO SISTEMA</h4>
+              <div class="value" style="color:#fbbf24;">100%</div>
+              <div class="subtext"><i class="fas fa-server"></i> Servidores saudáveis</div>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <!-- Criador Dinâmico de Linguagens -->
+            <div class="admin-panel-box">
+              <div class="admin-box-title">
+                <span><i class="fas fa-plus-circle"></i> Cadastrar Nova Linguagem</span>
+                <i class="fas fa-code"></i>
+              </div>
+              <form class="admin-form" id="admin-form-lang" novalidate>
+                <div class="input-group">
+                  <label for="ad-name">Nome da Linguagem</label>
+                  <input type="text" id="ad-name" class="auth-input" style="padding-left:16px;" placeholder="Ex: PHP, TypeScript" required>
+                </div>
+                <div class="input-group">
+                  <label for="ad-icon">Ícone FontAwesome</label>
+                  <input type="text" id="ad-icon" class="auth-input" style="padding-left:16px;" placeholder="Ex: fab fa-php" required>
+                </div>
+                <div class="input-group">
+                  <label for="ad-color">Cor Hex de Destaque</label>
+                  <input type="text" id="ad-color" class="auth-input" style="padding-left:16px;" placeholder="Ex: #4F5D95" required>
+                </div>
+                <div class="input-group">
+                  <label for="ad-category">Categoria Principal</label>
+                  <select id="ad-category" class="auth-input" style="padding-left:16px; background:#000; color:#fff;" required>
+                    <option value="iniciante">Iniciante</option>
+                    <option value="web">Web</option>
+                    <option value="jogos">Jogos</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="dados">Dados</option>
+                    <option value="sistemas">Sistemas</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label for="ad-diff">Texto de Dificuldade</label>
+                  <input type="text" id="ad-diff" class="auth-input" style="padding-left:16px;" placeholder="Ex: Fácil, Médio, Difícil" required>
+                </div>
+                <div class="input-group full-width">
+                  <label for="ad-analogy">Analogia Didática (Crianças)</label>
+                  <textarea id="ad-analogy" class="auth-input" style="padding-left:16px; height:60px; resize:none;" placeholder="Ex: Imagine que o PHP é como um cozinheiro de restaurante nos bastidores..." required></textarea>
+                </div>
+                <div class="input-group full-width">
+                  <label for="ad-what-does">Para que serve? (Resumo)</label>
+                  <input type="text" id="ad-what-does" class="auth-input" style="padding-left:16px;" placeholder="Ex: Criar a lógica interna de sites como Facebook e Wikipedia." required>
+                </div>
+                <div class="input-group full-width">
+                  <label for="ad-cool-fact">Fato Curioso</label>
+                  <input type="text" id="ad-cool-fact" class="auth-input" style="padding-left:16px;" placeholder="Ex: O PHP significa Personal Home Page originalmente!" required>
+                </div>
+                <div class="input-group full-width">
+                  <label for="ad-code">Código de Exemplo</label>
+                  <textarea id="ad-code" class="auth-input" style="padding-left:16px; height:80px; font-family:monospace; resize:none;" placeholder="Ex: <?php echo 'Olá'; ?>" required></textarea>
+                </div>
+                <div class="input-group">
+                  <label for="ad-proj-title">Título do Mini-Projeto</label>
+                  <input type="text" id="ad-proj-title" class="auth-input" style="padding-left:16px;" placeholder="Ex: Formulário de Mensagens" required>
+                </div>
+                <div class="input-group">
+                  <label for="ad-proj-desc">Descrição do Mini-Projeto</label>
+                  <input type="text" id="ad-proj-desc" class="auth-input" style="padding-left:16px;" placeholder="Ex: Sistema para enviar recados virtuais de poções." required>
+                </div>
+                
+                <button type="submit" class="admin-form-btn">Cadastrar Nova Linguagem <i class="fas fa-check-circle"></i></button>
+              </form>
+            </div>
+
+            <!-- Tabela de Gerenciamento de Alunos & Terminal de Auditoria -->
+            <div class="admin-panel-box" style="gap:24px;">
+              <div>
+                <div class="admin-box-title">
+                  <span><i class="fas fa-users-cog"></i> Gerenciar Contas de Alunos</span>
+                  <button class="btn-play-run" style="background:#fbbf24; color:#000;" id="admin-btn-export">Exportar CSV <i class="fas fa-file-csv"></i></button>
+                </div>
+                
+                <div style="max-height: 250px; overflow-y: auto; border: 1px solid var(--border-color); border-radius:10px;">
+                  <table class="leaderboard-table" style="font-size:0.8rem;">
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>XP</th>
+                        <th>Medalhas</th>
+                        <th>Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-users-tbody">
+                      <!-- Gerado dinamicamente -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              <div>
+                <div class="admin-box-title">
+                  <span><i class="fas fa-terminal"></i> Console de Atividades do Sistema</span>
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="admin-terminal-logs" id="admin-logs-console"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL DE DETALHES DE LINGUAGEM (COMPILADO DENTRO DO PORTAL) -->
   <div class="modal-overlay" id="lang-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-container">
-      <button class="modal-close" id="modal-close-btn" aria-label="Fechar modal"><i class="fas fa-times"></i></button>
+      <button class="modal-close" id="modal-close-btn" aria-label="Fechar janela de detalhes"><i class="fas fa-times"></i></button>
       
       <div class="modal-header-banner">
         <div id="modal-icon"><i class="fab fa-python"></i></div>
@@ -286,7 +629,7 @@
       
       <div class="modal-body">
         <div class="info-grid">
-          <!-- Coluna 1 -->
+          <!-- Main Info Column -->
           <div class="info-main">
             <!-- Analogia -->
             <div class="info-card analogy-box">
@@ -294,7 +637,7 @@
               <p id="modal-analogy">A analogia aparece aqui.</p>
             </div>
             
-            <!-- Exemplo de Código -->
+            <!-- Code Example -->
             <div class="info-card">
               <h4><i class="fas fa-code"></i> Código de Exemplo</h4>
               <div class="code-container">
@@ -311,7 +654,7 @@
             </div>
           </div>
           
-          <!-- Coluna 2 -->
+          <!-- Sidebar Info Column -->
           <div class="info-sidebar">
             <!-- Usos práticos -->
             <div class="info-card">
@@ -347,12 +690,7 @@
     </div>
   </div>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>© 2026 <span>Emmanuel Educa</span>. Feito com ❤️ para futuros desenvolvedores intergalácticos.</p>
-  </footer>
-
-  <!-- Canvas-Confetti CDN para comemorações -->
+  <!-- Confetti CDN para celebrações gamificadas -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <!-- Scripts do Sistema -->

@@ -151,8 +151,8 @@ const badgesData = [
     color: '#a855f7'
   },
   {
-    id: 'badge_emmanuel_god',
-    name: 'Lenda Emmanuel Educa 👑',
+    id: 'badge_emannuel_god',
+    name: 'Lenda Emannuel Educa 👑',
     description: 'Gabarite o Quiz com 10/10 e consiga o título máximo da plataforma!',
     requirement: (score) => score === 10,
     icon: 'fas fa-crown',

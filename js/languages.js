@@ -1,4 +1,4 @@
-// Banco de dados de linguagens para a plataforma Emmanuel Educa
+// Banco de dados de linguagens para a plataforma Emannuel Educa
 // Mescla as linguagens padrão com linguagens customizadas adicionadas pelo Admin via localStorage
 
 const defaultLanguages = [
@@ -53,7 +53,7 @@ FIM-REPITA`,
     howToRunLocal: [
       'Baixe o instalador no site <a href="https://www.python.org" target="_blank" class="glow-link">python.org</a> e marque a caixinha "Add Python to PATH" durante a instalação.',
       'Abra o VS Code e instale a extensão chamada "Python".',
-      'Crie um arquivo chamado <code>app.py</code>, escreva <code>print("Olá, Emmanuel!")</code> e aperte o botão de "Play" para rodar.'
+      'Crie um arquivo chamado <code>app.py</code>, escreva <code>print("Olá, Emannuel!")</code> e aperte o botão de "Play" para rodar.'
     ],
     codeExample: `# Um jogo de adivinhação super rápido!
 import random
@@ -475,7 +475,7 @@ func enviarMensagem(nome string) {
 
 // Carregar linguagens customizadas do localStorage
 function getLanguages() {
-  const customs = JSON.parse(localStorage.getItem('emmanuel_educa_custom_languages')) || [];
+  const customs = JSON.parse(localStorage.getItem('emannuel_educa_custom_languages')) || [];
   return [...defaultLanguages, ...customs];
 }
 

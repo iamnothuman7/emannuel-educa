@@ -1,6 +1,6 @@
-# Emmanuel Educa 🚀🟢
+# Emannuel Educa 🚀🟢
 
-**Emmanuel Educa** é uma plataforma interativa de ensino de programação projetada para crianças (a partir de 10 anos) e iniciantes de todas as idades. O projeto possui um visual de ficção científica ("Cyber-Edu") com fundo preto e detalhes em verde neon/esmeralda, focado em alta interatividade e gamificação.
+**Emannuel Educa** é uma plataforma interativa de ensino de programação projetada para crianças (a partir de 10 anos) e iniciantes de todas as idades. O projeto possui um visual de ficção científica ("Cyber-Edu") com fundo preto e detalhes em verde neon/esmeralda, focado em alta interatividade e gamificação.
 
 ## 🌟 Principais Recursos
 
@@ -10,7 +10,7 @@
 4. **Arena do Quiz**: Um jogo de perguntas e respostas gamificado com feedback imediato explicativo de cada questão. O quiz calcula a pontuação e dá XP ao jogador.
 5. **Medalhas e Conquistas (Badges)**: Sistema automático que desbloqueia medalhas específicas com base no seu progresso e pontuação do Quiz. Seu progresso fica salvo localmente (`localStorage`).
 6. **Efeitos Sonoros Retrô (8-Bit)**: Sons espaciais interativos sintetizados diretamente no navegador via **Web Audio API** (sem necessidade de arquivos de áudio externos pesados) que tocam ao responder ao Quiz, ganhar XP ou avançar fases.
-7. **Emmanuel AI**: Chatbot interativo simulando um robô ajudante para responder perguntas frequentes e indicar caminhos.
+7. **Emannuel AI**: Chatbot interativo simulando um robô ajudante para responder perguntas frequentes e indicar caminhos.
 
 ## 🛠️ Tecnologias Utilizadas
 

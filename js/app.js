@@ -1,4 +1,4 @@
-// Emmanuel Educa - Core Logic & Gamification Engine Pro
+// Emannuel Educa - Core Logic & Gamification Engine Pro
 
 // 1. Estado Global do Aplicativo
 const state = {
@@ -96,28 +96,28 @@ document.addEventListener('DOMContentLoaded', () => {
 // 4. Lógica de Banco de Dados Local (localStorage)
 function loadDatabase() {
   // Carrega lista de usuários geral
-  let storedUsers = localStorage.getItem('emmanuel_educa_users');
+  let storedUsers = localStorage.getItem('emannuel_educa_users');
   if (!storedUsers) {
     // Insere semente inicial de usuários competitivos
     state.users = [...defaultLeaderboardUsers];
-    localStorage.setItem('emmanuel_educa_users', JSON.stringify(state.users));
+    localStorage.setItem('emannuel_educa_users', JSON.stringify(state.users));
   } else {
     state.users = JSON.parse(storedUsers);
   }
 
   // Carrega linguagens customizadas do admin
-  state.customLanguages = JSON.parse(localStorage.getItem('emmanuel_educa_custom_languages')) || [];
+  state.customLanguages = JSON.parse(localStorage.getItem('emannuel_educa_custom_languages')) || [];
   
   // Carrega logs de sistema
-  state.systemLogs = JSON.parse(localStorage.getItem('emmanuel_educa_logs')) || [
+  state.systemLogs = JSON.parse(localStorage.getItem('emannuel_educa_logs')) || [
     `[${getTimestamp()}] Sistema inicializado com sucesso.`
   ];
 }
 
 function saveDatabase() {
-  localStorage.setItem('emmanuel_educa_users', JSON.stringify(state.users));
-  localStorage.setItem('emmanuel_educa_custom_languages', JSON.stringify(state.customLanguages));
-  localStorage.setItem('emmanuel_educa_logs', JSON.stringify(state.systemLogs));
+  localStorage.setItem('emannuel_educa_users', JSON.stringify(state.users));
+  localStorage.setItem('emannuel_educa_custom_languages', JSON.stringify(state.customLanguages));
+  localStorage.setItem('emannuel_educa_logs', JSON.stringify(state.systemLogs));
   
   // Recarrega banco dinâmico do languages.js
   if (typeof reloadLanguagesData === 'function') {
@@ -126,7 +126,7 @@ function saveDatabase() {
 }
 
 function checkSession() {
-  const session = localStorage.getItem('emmanuel_educa_session');
+  const session = localStorage.getItem('emannuel_educa_session');
   if (session) {
     const user = state.users.find(u => u.email === session);
     if (user) {
@@ -202,16 +202,16 @@ function setupAuthEvents() {
     const errorBox = document.getElementById('login-error');
 
     // Validação Superusuário / Admin
-    if (email === 'emmanuel_admin' && pass === 'educa_superuser_99') {
+    if (email === 'emannuel_admin' && pass === 'educa_superuser_99') {
       errorBox.style.display = 'none';
       let adminUser = state.users.find(u => u.email === 'admin@educa.com');
       if (!adminUser) {
         adminUser = {
-          name: 'Emmanuel (Admin) 👑',
+          name: 'Emannuel (Admin) 👑',
           email: 'admin@educa.com',
           xp: 1000,
           completed: [],
-          badges: ['badge_emmanuel_god'],
+          badges: ['badge_emannuel_god'],
           role: 'admin'
         };
         state.users.push(adminUser);
@@ -255,7 +255,7 @@ function setupAuthEvents() {
     const errorBox = document.getElementById('signup-error');
 
     // Impedir cadastrar com e-mail reservado de admin
-    if (email === 'admin@educa.com' || email === 'emmanuel_admin') {
+    if (email === 'admin@educa.com' || email === 'emannuel_admin') {
       errorBox.innerText = 'Este e-mail é reservado pelo sistema.';
       errorBox.style.display = 'block';
       sounds.error();
@@ -298,7 +298,7 @@ function setupAuthEvents() {
 
 function loginUserSession(user) {
   state.currentUser = user;
-  localStorage.setItem('emmanuel_educa_session', user.email);
+  localStorage.setItem('emannuel_educa_session', user.email);
   sounds.success();
   
   // Atualiza HUD e Interface
@@ -340,7 +340,7 @@ function logout() {
   sounds.click();
   addLog(`Usuário [${state.currentUser?.name}] deslogou.`);
   state.currentUser = null;
-  localStorage.removeItem('emmanuel_educa_session');
+  localStorage.removeItem('emannuel_educa_session');
   showLandingPage();
 }
 
@@ -614,7 +614,7 @@ document.getElementById('modal-close-btn').onclick = () => {
 
 // 10. Editor / Playground
 const playgroundTemplates = {
-  'javascript': `// Olá Mundo e Loops no Emmanuel Educa 🪐
+  'javascript': `// Olá Mundo e Loops no Emannuel Educa 🪐
 // Digite seu código JavaScript e execute!
 
 function contarEstrelas() {
@@ -629,7 +629,7 @@ contarEstrelas();`,
   'html-css': `<!-- Desenhe o seu portal espacial! -->
 <div class="cyber-box">
   <h1>PORTAL HACKER</h1>
-  <p>Almanaque Emmanuel Educa</p>
+  <p>Almanaque Emannuel Educa</p>
   <div class="glow-ring"></div>
 </div>
 
@@ -1148,14 +1148,14 @@ function setupGlossary() {
 
 // 15. Chatbot
 const botResponses = {
-  'olá': 'Olá, campeão! Robo-Emmanuel no ar. Como posso guiar seus códigos hoje?',
-  'ola': 'Olá, campeão! Robo-Emmanuel no ar. Como posso guiar seus códigos hoje?',
+  'olá': 'Olá, campeão! Robo-Emannuel no ar. Como posso guiar seus códigos hoje?',
+  'ola': 'Olá, campeão! Robo-Emannuel no ar. Como posso guiar seus códigos hoje?',
   'comecar': 'Comece pelo Scratch! Seus blocos são divertidos e super fáceis.',
   'como começar': 'Comece pelo Scratch! Seus blocos são divertidos e super fáceis.',
   'python': 'Python é prático, direto e a linguagem usada na Inteligência Artificial!',
   'criar jogos': 'Para jogos 2D/3D use C# com Unity. É a melhor engine do mercado!',
   'criar sites': 'Use HTML (esqueleto), CSS (design) e JS (movimento). A tríade da Web!',
-  'admin': 'Se você for o superusuário, seu login é emmanuel_admin. Com ele você controla o sistema!',
+  'admin': 'Se você for o superusuário, seu login é emannuel_admin. Com ele você controla o sistema!',
   'ajuda': 'Escreva "como começar", "python", "criar jogos" ou "criar sites" para receber dicas rápidas!'
 };
 
@@ -1396,7 +1396,7 @@ document.getElementById('admin-btn-export').onclick = () => {
   const encodedUri = encodeURI(csvContent);
   const link = document.createElement("a");
   link.setAttribute("href", encodedUri);
-  link.setAttribute("download", `emmanuel_educa_alunos_${getTimestamp().replace(/[: ]/g, '_')}.csv`);
+  link.setAttribute("download", `emannuel_educa_alunos_${getTimestamp().replace(/[: ]/g, '_')}.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

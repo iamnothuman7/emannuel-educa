@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Emmanuel Educa | Almanaque Interativo de Programação</title>
+  <meta name="description" content="Aprenda a programar de forma fácil e divertida com o Emmanuel Educa! Um almanaque de linguagens com playground, quiz e roteiros ideais para crianças e iniciantes.">
+  <meta name="author" content="Emmanuel Educa">
+  <meta name="theme-color" content="#050608">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cabecário / HUD Tecnológico -->
+  <header>
+    <a href="#" class="logo" id="logo-home">
+      <i class="fas fa-microchip"></i>
+      <div class="logo-text">EMMANUEL <span>EDUCA</span></div>
+    </a>
+    
+    <!-- Navegação -->
+    <nav aria-label="Navegação Principal">
+      <button class="nav-btn active" data-tab="aprender" id="btn-tab-aprender">
+        <i class="fas fa-book-open"></i> Aprender
+      </button>
+      <button class="nav-btn" data-tab="playground" id="btn-tab-playground">
+        <i class="fas fa-laptop-code"></i> Playground
+      </button>
+      <button class="nav-btn" data-tab="roadmap" id="btn-tab-roadmap">
+        <i class="fas fa-map-signs"></i> Roadmap
+      </button>
+      <button class="nav-btn" data-tab="quiz" id="btn-tab-quiz">
+        <i class="fas fa-gamepad"></i> Quiz Arena
+      </button>
+      <button class="nav-btn" data-tab="glossario" id="btn-tab-glossario">
+        <i class="fas fa-atlas"></i> Glossário
+      </button>
+      <button class="nav-btn" data-tab="chat" id="btn-tab-chat">
+        <i class="fas fa-robot"></i> Emmanuel AI
+      </button>
+    </nav>
+    
+    <!-- Painel de Estatísticas / Gamificação -->
+    <div class="hud-panel" id="hud-gamification">
+      <div class="xp-container">
+        <div class="xp-label">
+          <span id="hud-level-label">NÍVEL 1</span>
+          <span id="hud-xp-count">0 XP</span>
+        </div>
+        <div class="xp-bar-outer" aria-label="Barra de progresso de nível">
+          <div class="xp-bar-inner" id="hud-xp-bar"></div>
+        </div>
+      </div>
+      
+      <div class="badge-counter" id="badge-display-box" title="Minhas Medalhas Conquistadas">
+        <i class="fas fa-award"></i>
+        <span id="hud-badge-count">0 Medalhas</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main id="main-content">
+    
+    <!-- SEÇÃO 1: APRENDER (ALMANAQUE) -->
+    <section class="section active" id="section-aprender" aria-label="Almanaque de Linguagens">
+      <div class="hero">
+        <h1>O ALMANAQUE DA <span>PROGRAMAÇÃO</span></h1>
+        <p>Explore o universo dos códigos! Escolha uma linguagem abaixo para aprender de forma divertida com analogias simples feitas até para uma criança de 10 anos entender.</p>
+      </div>
+      
+      <!-- Busca e Filtros -->
+      <div class="search-filter-container">
+        <div class="search-wrapper">
+          <i class="fas fa-search"></i>
+          <input type="text" id="lang-search" class="search-input" placeholder="Pesquisar por linguagem (Ex: Python, Javascript)..." aria-label="Buscar linguagem de programação">
+        </div>
+        
+        <div class="filter-tags" role="group" aria-label="Filtrar linguagens por categoria">
+          <button class="filter-tag active" data-filter="all">Todos</button>
+          <button class="filter-tag" data-filter="iniciante">Iniciante</button>
+          <button class="filter-tag" data-filter="web">Web</button>
+          <button class="filter-tag" data-filter="jogos">Jogos</button>
+          <button class="filter-tag" data-filter="mobile">Mobile</button>
+          <button class="filter-tag" data-filter="dados">Dados</button>
+          <button class="filter-tag" data-filter="sistemas">Sistemas</button>
+        </div>
+      </div>
+      
+      <!-- Grid de Linguagens -->
+      <div class="languages-grid" id="languages-grid">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </section>
+    
+    <!-- SEÇÃO 2: PLAYGROUND (SIMULADOR DE CÓDIGO) -->
+    <section class="section" id="section-playground" aria-label="Playground Interativo">
+      <div class="hero">
+        <h1>PLAYGROUND <span>INTERATIVO</span></h1>
+        <p>Escreva códigos reais e veja a mágica acontecer instantaneamente na sua tela de testes!</p>
+      </div>
+      
+      <div class="playground-container">
+        <!-- Lado 1: Editor -->
+        <div class="playground-editor">
+          <div class="playground-header">
+            <span class="playground-title"><i class="fas fa-code"></i> Editor de Código</span>
+            <select id="play-lang-select" class="playground-select" aria-label="Selecione a linguagem para o playground">
+              <option value="javascript">JavaScript (Consola/Lógica)</option>
+              <option value="html-css">HTML & CSS (Página Web)</option>
+            </select>
+            <button class="btn-play-run" id="play-btn-run">
+              Executar Código <i class="fas fa-play"></i>
+            </button>
+          </div>
+          <textarea id="play-code" class="playground-textarea" spellcheck="false" aria-label="Área para digitar código"></textarea>
+        </div>
+        
+        <!-- Lado 2: Tela de Resultado -->
+        <div class="playground-preview">
+          <div class="playground-header">
+            <span class="playground-title"><i class="fas fa-terminal"></i> Terminal / Visualização</span>
+          </div>
+          <!-- Preview HTML/CSS -->
+          <iframe id="play-iframe" class="iframe-preview" style="display: none;" title="Visualização do resultado do código"></iframe>
+          <!-- Logs de Console JS -->
+          <div id="play-terminal" class="terminal-preview">// Console limpo. Aguardando execução...</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SEÇÃO 3: ROADMAP (ROTA DO FUTURO) -->
+    <section class="section" id="section-roadmap" aria-label="Roteiro de Estudos">
+      <div class="hero">
+        <h1>ROADMAP DO <span>FUTURO</span></h1>
+        <p>Siga esta rota de aprendizado sugerida para passar de um curioso digital a um criador de mundos completo!</p>
+      </div>
+      
+      <div class="roadmap-container" id="roadmap-list">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </section>
+    
+    <!-- SEÇÃO 4: QUIZ (ARENA) -->
+    <section class="section" id="section-quiz" aria-label="Quiz de Programação">
+      <div class="hero">
+        <h1>ARENA DE <span>QUIZ</span></h1>
+        <p>Teste seus conhecimentos cibernéticos nas 10 perguntas do Emmanuel Educa, ganhe XP e desbloqueie medalhas incríveis!</p>
+      </div>
+      
+      <!-- Box do Jogo -->
+      <div class="quiz-wrapper">
+        <div id="quiz-play-box">
+          <div class="quiz-hud">
+            <span>Questão <strong id="quiz-current-num">1</strong> de <strong id="quiz-total-num">10</strong></span>
+            <span>Pontos: <strong id="quiz-score-val">0</strong> XP</span>
+          </div>
+          
+          <div class="quiz-progress-outer">
+            <div class="quiz-progress-inner" id="quiz-progress"></div>
+          </div>
+          
+          <div class="quiz-question-box">
+            <h2 id="quiz-question">Carregando pergunta galáctica...</h2>
+            
+            <div class="quiz-options" id="quiz-options">
+              <!-- Renderizado dinamicamente -->
+            </div>
+          </div>
+          
+          <!-- Bloco de Explicação -->
+          <div class="quiz-feedback" id="quiz-feedback-box">
+            <h3 class="feedback-title" id="quiz-feedback-title">RESPOSTA CORRETA!</h3>
+            <p id="quiz-feedback-text">Explicação</p>
+          </div>
+          
+          <div class="quiz-actions">
+            <button class="btn-next-question" id="quiz-btn-next">
+              Próxima Questão <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Box de Resultados -->
+        <div class="quiz-results" id="quiz-results-box">
+          <div class="results-crown"><i class="fas fa-crown"></i></div>
+          <h2 class="results-score" id="results-score-val">10/10</h2>
+          <h3 id="results-xp-earned" style="margin-bottom: 10px;">Você ganhou +150 XP!</h3>
+          <p class="results-msg" id="results-msg-text">Carregando avaliação...</p>
+          
+          <!-- Conquistas Unlocked -->
+          <div class="unlocked-badges-container">
+            <h4>MEDALHAS DESTA RODADA</h4>
+            <div class="results-badges-grid" id="results-badges">
+              <!-- Cards das medalhas -->
+            </div>
+          </div>
+          
+          <button class="btn-restart-quiz" id="quiz-btn-restart">Jogar Novamente <i class="fas fa-redo"></i></button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- SEÇÃO 5: GLOSSÁRIO -->
+    <section class="section" id="section-glossario" aria-label="Glossário Hacker">
+      <div class="hero">
+        <h1>GLOSSÁRIO <span>HACKER</span></h1>
+        <p>Apareceu uma palavra difícil por aí? Procure-a aqui para entender o significado com analogias do dia a dia.</p>
+      </div>
+      
+      <!-- Busca Glossário -->
+      <div class="search-filter-container" style="max-width: 600px; margin: 0 auto 40px auto;">
+        <div class="search-wrapper">
+          <i class="fas fa-search"></i>
+          <input type="text" id="glossary-search" class="search-input" placeholder="Pesquisar termo (Ex: API, Bug, Loops)..." aria-label="Buscar termo do glossário">
+        </div>
+      </div>
+      
+      <div class="glossary-grid" id="glossary-list">
+        <!-- Renderizado dinamicamente -->
+      </div>
+    </section>
+    
+    <!-- SEÇÃO 6: CHATBOT AJUDANTE -->
+    <section class="section" id="section-chat" aria-label="Emmanuel AI Chatbot">
+      <div class="hero">
+        <h1>EMMANUEL <span>AI</span></h1>
+        <p>Converse com o Robo-Emmanuel! Ele está pronto para responder suas principais dúvidas sobre programação e guiar seus passos.</p>
+      </div>
+      
+      <div class="chatbot-wrapper">
+        <div class="chatbot-header">
+          <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+          <div class="bot-info">
+            <h3>Robo-Emmanuel</h3>
+            <span class="bot-status">Online e escutando</span>
+          </div>
+        </div>
+        
+        <!-- Histórico do Chat -->
+        <div class="chat-history" id="chat-history">
+          <div class="chat-message bot">
+            Bip Bop! Olá, futuro programador! Eu sou o Robo-Emmanuel, o robô conselheiro da plataforma. Qual a sua dúvida sobre códigos hoje?
+          </div>
+        </div>
+        
+        <!-- Balões de Dicas Rápidas -->
+        <div class="chat-suggestions">
+          <button class="suggestion-chip">Como começar?</button>
+          <button class="suggestion-chip">Como criar jogos?</button>
+          <button class="suggestion-chip">O que é Python?</button>
+          <button class="suggestion-chip">Como criar sites?</button>
+        </div>
+        
+        <!-- Input de Mensagem -->
+        <div class="chat-input-area">
+          <input type="text" id="chat-input" class="chat-input" placeholder="Pergunte algo ao Robo-Emmanuel..." aria-label="Digite sua mensagem para o chatbot">
+          <button class="btn-chat-send" id="chat-btn-send" aria-label="Enviar mensagem">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE DETALHES DE LINGUAGEM -->
+  <div class="modal-overlay" id="lang-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-container">
+      <button class="modal-close" id="modal-close-btn" aria-label="Fechar modal"><i class="fas fa-times"></i></button>
+      
+      <div class="modal-header-banner">
+        <div id="modal-icon"><i class="fab fa-python"></i></div>
+        <div class="modal-title-box">
+          <h2 id="modal-title">Linguagem</h2>
+          <span class="modal-difficulty-badge" id="modal-diff-badge">Dificuldade</span>
+        </div>
+      </div>
+      
+      <div class="modal-body">
+        <div class="info-grid">
+          <!-- Coluna 1 -->
+          <div class="info-main">
+            <!-- Analogia -->
+            <div class="info-card analogy-box">
+              <h4><i class="fas fa-lightbulb"></i> Analogia Mágica (O que é?)</h4>
+              <p id="modal-analogy">A analogia aparece aqui.</p>
+            </div>
+            
+            <!-- Exemplo de Código -->
+            <div class="info-card">
+              <h4><i class="fas fa-code"></i> Código de Exemplo</h4>
+              <div class="code-container">
+                <div class="code-header">
+                  <span class="code-lang-name">CÓDIGO DIGITAL</span>
+                </div>
+                <pre class="code-box"><code id="modal-code-box"></code></pre>
+              </div>
+              <div class="run-actions">
+                <button class="btn-run-playground" id="modal-btn-run">
+                  Testar no Playground <i class="fas fa-flask"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Coluna 2 -->
+          <div class="info-sidebar">
+            <!-- Usos práticos -->
+            <div class="info-card">
+              <h4><i class="fas fa-rocket"></i> Para que serve?</h4>
+              <p id="modal-what-does">Usos práticos aqui.</p>
+            </div>
+            
+            <!-- Curiosidade -->
+            <div class="info-card">
+              <h4><i class="fas fa-smile-wink"></i> Fato Curioso</h4>
+              <p id="modal-cool-fact">Curiosidades aqui.</p>
+            </div>
+            
+            <!-- Como Rodar Localmente -->
+            <div class="info-card">
+              <h4><i class="fas fa-desktop"></i> Testar no seu Computador</h4>
+              <ul class="step-list" id="modal-steps">
+                <!-- Passos renderizados -->
+              </ul>
+            </div>
+            
+            <!-- Projeto Prático -->
+            <div class="info-card" style="border-color: rgba(251, 191, 36, 0.25);">
+              <h4 style="border-bottom-color: rgba(251, 191, 36, 0.1);"><i class="fas fa-trophy" style="color:#fbbf24;"></i> <span id="modal-project-title">Projeto</span></h4>
+              <p id="modal-project-desc" style="font-size:0.85rem; margin-bottom:12px; color:var(--text-muted);"></p>
+              <ul id="modal-project-steps" style="list-style:none; font-size:0.8rem; padding-left:0; color: #f3f4f6;">
+                <!-- Passos do projeto -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2026 <span>Emmanuel Educa</span>. Feito com ❤️ para futuros desenvolvedores intergalácticos.</p>
+  </footer>
+
+  <!-- Canvas-Confetti CDN para comemorações -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Scripts do Sistema -->
+  <script src="js/languages.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

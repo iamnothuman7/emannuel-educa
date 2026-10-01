@@ -1,45 +1,48 @@
-# Emannuel Educa 🚀🟢
+# Emannuel Educa
 
-**Emannuel Educa** é uma plataforma interativa de ensino de programação projetada para crianças (a partir de 10 anos) e iniciantes de todas as idades. O projeto possui um visual de ficção científica ("Cyber-Edu") com fundo preto e detalhes em verde neon/esmeralda, focado em alta interatividade e gamificação.
+Protótipo de ensino de programação para iniciantes, desenvolvido com HTML, CSS e JavaScript. Reúne lições, experimentação e quizzes em uma interface com identidade visual neon.
 
-## 🌟 Principais Recursos
+## O que explorar
 
-1. **Almanaque de Programação**: Catálogo detalhado com 12 linguagens principais (Scratch, Python, HTML/CSS, JavaScript, C#, Java, Swift, Kotlin, SQL, Rust, R e Go). Cada linguagem é explicada com analogias simples do dia a dia (ex: variáveis como caixas de brinquedo), exemplos de código, fatos curiosos e instruções de como instalar e rodar localmente.
-2. **Playground Interativo**: Um editor em tempo real onde é possível programar em **JavaScript** e **HTML/CSS** e ver o resultado imediato na tela, incluindo captura de saídas do console diretamente no terminal estilizado da plataforma.
-3. **Roadmap do Futuro**: Roteiro visual e interativo contendo etapas de desenvolvimento (Web, Jogos, Dados, Sistemas) onde o progresso pode ser marcado para acumular XP.
-4. **Arena do Quiz**: Um jogo de perguntas e respostas gamificado com feedback imediato explicativo de cada questão. O quiz calcula a pontuação e dá XP ao jogador.
-5. **Medalhas e Conquistas (Badges)**: Sistema automático que desbloqueia medalhas específicas com base no seu progresso e pontuação do Quiz. Seu progresso fica salvo localmente (`localStorage`).
-6. **Efeitos Sonoros Retrô (8-Bit)**: Sons espaciais interativos sintetizados diretamente no navegador via **Web Audio API** (sem necessidade de arquivos de áudio externos pesados) que tocam ao responder ao Quiz, ganhar XP ou avançar fases.
-7. **Emannuel AI**: Chatbot interativo simulando um robô ajudante para responder perguntas frequentes e indicar caminhos.
+- Catálogo introdutório de linguagens e exemplos de programação.
+- Playground de JavaScript e visualização de HTML/CSS.
+- Quizzes, roteiro de aprendizado, XP e conquistas.
+- Efeitos sonoros com Web Audio e celebrações visuais.
+- Interface demonstrativa de contas, perfis e administração local.
+- Assistente de respostas predefinidas, apresentado na interface como Emannuel AI. Não há integração com um modelo de linguagem.
 
-## 🛠️ Tecnologias Utilizadas
+## Executar localmente
 
-- **HTML5** (Estrutura semântica e acessível)
-- **CSS3** (Variáveis CSS, animações personalizadas de neon, Grid/Flexbox e glassmorphism)
-- **JavaScript ES6+** (Orientado a estados, lógica dinâmica, manipulação do DOM e Web Audio API)
-- **canvas-confetti** (Biblioteca externa via CDN para efeitos visuais nas vitórias)
-- **FontAwesome** (Ícones vetoriais modernos)
+Não há etapa de compilação nem backend. Com Python instalado:
 
-## 📂 Estrutura do Projeto
-
-```text
-├── index.html          # Ponto de entrada e estrutura da aplicação
-├── css/
-│   └── style.css       # Estilização completa e responsiva
-├── js/
-│   ├── languages.js    # Banco de dados de lições de cada linguagem
-│   ├── quiz.js         # Perguntas e lógica de conquistas
-│   └── app.js          # Inicialização, som, lógica de abas e playground
-└── README.md           # Documentação do projeto
+```sh
+git clone https://github.com/iamnothuman7/emannuel-educa.git
+cd emannuel-educa
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-## 🚀 Como Executar Localmente
+Abra `http://127.0.0.1:8000/`. Alguns recursos visuais usam serviços externos, como Font Awesome e canvas-confetti, e precisam de conexão com a internet.
 
-Como a plataforma foi feita em **Front-end Puro**, você não precisa instalar nenhuma ferramenta de servidor complexa para testar!
+## Estrutura
 
-1. Baixe a pasta do projeto.
-2. Abra a pasta no **VS Code**.
-3. Use a extensão **Live Server** (clique com botão direito em `index.html` e selecione *Open with Live Server*) ou apenas dê um duplo clique no arquivo `index.html` para abrir diretamente no seu navegador de preferência!
+| Arquivo | Função |
+| --- | --- |
+| `index.html` | Estrutura da aplicação |
+| `css/style.css` | Layout, temas e animações |
+| `js/languages.js` | Conteúdo das lições |
+| `js/quiz.js` | Conteúdo dos quizzes |
+| `js/app.js` | Navegação, estado, playground e controles da interface |
 
----
-Desenvolvido com carinho para inspirar a próxima geração de engenheiros de software galácticos! 💫
+## Limites de segurança e privacidade
+
+Este é um protótipo de frontend, não uma plataforma escolar pronta para produção. Contas, sessões e progresso ficam em `localStorage`, sob controle de quem usa o navegador. A tela de administração não é uma barreira de segurança de servidor.
+
+Use apenas nomes, emails e senhas fictícios. Não reutilize senhas pessoais nem cadastre dados de alunos. Limpar os dados do navegador pode apagar o progresso.
+
+O playground executa JavaScript no navegador com `new Function`. Execute somente código que você compreende e não cole conteúdo desconhecido. Uma evolução para uso público com dados reais exige autenticação no servidor, armazenamento apropriado e isolamento da execução de código.
+
+## Validação e próximos passos
+
+Ainda não há suíte automatizada de testes no repositório. Ao contribuir, verifique navegação por teclado, telas pequenas, áudio após interação, persistência de progresso, quizzes e os dois modos do playground. Esses itens são uma lista de verificação, não uma declaração de testes concluídos.
+
+Issues e pull requests são bem-vindos com exemplos fictícios. Não há licença de redistribuição declarada neste repositório.
